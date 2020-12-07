@@ -3,6 +3,7 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+const Questao = use("App/Models/Questao")
 
 /**
  * Resourceful controller for interacting with questaos
@@ -18,6 +19,8 @@ class QuestaoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const quest = await Questao.all()
+    return quest
   }
 
   /**
@@ -53,6 +56,8 @@ class QuestaoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const quest = await Questao.findOrFail(params.id)
+    return quest
   }
 
   /**

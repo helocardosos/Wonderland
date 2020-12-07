@@ -3,6 +3,7 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+const Alternativa = use("App/Models/Alternativa")
 
 /**
  * Resourceful controller for interacting with alternativas
@@ -18,6 +19,8 @@ class AlternativaController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const alter = await Alterativa.all()
+    return alter
   }
 
   /**
@@ -53,6 +56,8 @@ class AlternativaController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const alter = await Alternativa.findOrFail(params.id)
+    return alter
   }
 
   /**
